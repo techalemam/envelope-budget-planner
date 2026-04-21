@@ -29,9 +29,8 @@
         }
 
         [dir="rtl"] { font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif; }
-                * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: var(--bg);
@@ -40,7 +39,6 @@
             transition: background 0.3s;
             overflow-x: hidden;
         }
-
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -49,7 +47,6 @@
         }
 
         body.what-if-active { background: #fff1f2; }
-        
         .what-if-banner {
             display: none;
             background: var(--danger);
@@ -63,8 +60,10 @@
             box-shadow: var(--shadow);
             animation: slideDown 0.3s ease;
         }
-        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
-
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
         body.what-if-active .what-if-banner { display: block; }
 
         header {
@@ -80,17 +79,6 @@
             position: relative;
             overflow: hidden;
         }
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -10%;
-            width: 60%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(30deg);
-            pointer-events: none;
-        }
 
         .btn {
             padding: 10px 20px;
@@ -104,10 +92,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         }
-        .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
-        .btn:active { transform: translateY(0) scale(0.98); }
 
         .btn-header {
             background: rgba(255, 255, 255, 0.15);
@@ -115,7 +100,6 @@
             color: white;
             backdrop-filter: blur(8px);
         }
-        .btn-header:hover { background: rgba(255, 255, 255, 0.25); }
 
         .summary-grid {
             display: grid;
@@ -133,13 +117,11 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             border-bottom: 4px solid var(--primary);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95);
         }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-        .stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
-        .stat-val { font-size: 28px; font-weight: 800; margin-top: 10px; color: var(--text-main); }
+
+        .stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+        .stat-val { font-size: 28px; font-weight: 800; margin-top: 10px; }
 
         .tabs {
             display: flex;
@@ -158,7 +140,6 @@
             cursor: pointer;
             font-weight: 700;
             color: var(--text-muted);
-            font-size: 15px;
             transition: all 0.2s;
         }
         .tab.active { background: white; color: var(--primary); box-shadow: var(--shadow); }
@@ -168,7 +149,6 @@
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 25px;
         }
-        @media (max-width: 640px) { .env-grid { grid-template-columns: 1fr; } }
 
         .env-card {
             background: var(--card-bg);
@@ -177,10 +157,7 @@
             box-shadow: var(--shadow);
             position: relative;
             border-left: 8px solid #cbd5e0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .env-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-card); }
-
         [dir="rtl"] .env-card { border-left: none; border-right: 8px solid #cbd5e0; }
         .env-card.goal { border-color: var(--success); }
         .env-card.debt { border-color: var(--danger); }
@@ -192,23 +169,21 @@
             border-radius: 5px;
             margin: 20px 0;
             overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
-        .progress-bar { height: 100%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 5px; }
-
-        .num { font-variant-numeric: tabular-nums; }
+        .progress-bar { height: 100%; transition: width 0.6s ease; }
 
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(15, 23, 42, 0.8);
             z-index: 3000;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(8px);
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
         }
         .modal.active { display: flex; }
         .modal-body {
@@ -219,716 +194,476 @@
             max-width: 550px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: var(--shadow-card);
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Modern Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-        .card-box { background: var(--card-bg); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 30px; }
-        .section-heading { font-size: 20px; font-weight: 800; color: var(--text-main); padding-bottom: 14px; margin-bottom: 24px; border-bottom: 2px solid #e2e8f0; }
-        .field { width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 15px; transition: border-color 0.2s; background: #fafafa; color: var(--text-main); }
-        .field:focus { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
-        table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        table th { padding: 10px 12px; text-align: start; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); background: #f8fafc; border-bottom: 2px solid #e2e8f0; }
-        table td { padding: 12px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
-        table tr:hover td { background: #fafafa; }
-        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .field {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
         .badge-budget { background: #fef3c7; color: #92400e; }
         .badge-debt { background: #fee2e2; color: #991b1b; }
         .badge-goal { background: #d1fae5; color: #065f46; }
-        .num-cell { text-align: end; font-weight: 600; }
-        .btn-primary { background: var(--primary); color: white; } .btn-primary:hover { background: var(--primary-dark); } .btn-danger { background: var(--danger); color: white; }
-        .btn-danger:hover { background: #dc2626; }
-        .btn-success { background: var(--success); color: white; }
-        .btn-success:hover { background: #059669; }
-        .btn-outline { border: 1.5px solid #e2e8f0; background: white; color: var(--text-muted); }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-        .inp-sm { padding: 6px 10px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 13px; width: 90px; }
-        .suggest-tip { margin-top: 10px; padding: 8px 12px; border-radius: 8px; font-size: 12px; background: #f0fdf4; color: #16a34a; }
-        .suggest-warn { background: #fff7ed; color: #c2410c; }
+
         .pane { display: none; }
         .pane.active { display: block; }
-        .table-wrap table { min-width: 600px; }
-        /* ============================================
-   RESPONSIVE DESIGN - TABLET & MOBILE
-   ============================================ */
-
-/* Tablet: 768px and below */
-@media (max-width: 768px) {
-    .container { padding: 12px; padding-bottom: 60px; }
-    header { flex-direction: column; gap: 16px; padding: 24px 16px; text-align: center; }
-    header h1 { font-size: 22px; }
-    header > div:last-child { flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; }
-    .btn-header { font-size: 12px; padding: 8px 12px; flex: 1; min-width: 80px; }
-    .summary-grid { position: static; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
-    .stat-card { padding: 16px; }
-    .stat-val { font-size: 22px; }
-    .tabs { width: 100%; justify-content: stretch; }
-    .tab { flex: 1; font-size: 13px; padding: 10px 8px; text-align: center; }
-    .card-box { padding: 16px; }
-    .section-heading { font-size: 17px; }
-    .env-grid { grid-template-columns: 1fr; gap: 16px; }
-    .env-card { padding: 20px; }
-    .modal-body { padding: 24px; border-radius: 16px; }
-    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .table-wrap table { min-width: 500px; font-size: 13px; }
-    .inp-sm { width: 70px; }
-}
-
-/* Mobile: 480px and below */
-@media (max-width: 480px) {
-    .container { padding: 8px; padding-bottom: 50px; }
-    header { padding: 18px 12px; border-radius: 12px; }
-    header h1 { font-size: 18px; }
-    header p { font-size: 12px; }
-    .btn-header { font-size: 11px; padding: 7px 10px; }
-    .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .stat-card { padding: 12px; border-radius: 12px; }
-    .stat-label { font-size: 11px; }
-    .stat-val { font-size: 18px; margin-top: 6px; }
-    .tabs { gap: 4px; padding: 4px; border-radius: 12px; }
-    .tab { font-size: 12px; padding: 8px 6px; border-radius: 8px; }
-    .env-card { padding: 16px; border-radius: 14px; }
-    .env-card .num { font-size: 20px; }
-    .section-heading { font-size: 15px; }
-    .card-box { padding: 12px; border-radius: 14px; }
-    .btn { font-size: 13px; padding: 8px 14px; }
-    .modal-body { padding: 18px; border-radius: 14px; }
-    .table-wrap table { min-width: 460px; font-size: 12px; }
-    .table-wrap th, .table-wrap td { padding: 8px 6px; }
-    /* Stack card header on mobile */
-    .env-card [style*="display:flex; justify-content:space-between"] { flex-direction: column; gap: 10px; }
-    /* Quick deposit bar stacks */
-    .update-bar { flex-wrap: wrap; }
-    .inp-sm { flex: 1; min-width: 60px; }
-    /* Timeline grid fix */
-    #ganttChart > div { grid-template-columns: 90px 1fr !important; }
-}
-
-                /* === RESPONSIVE DESIGN === */
-        /* Tablet: 768px and below */
+        
         @media (max-width: 768px) {
-            .container { padding: 12px; padding-bottom: 70px; }
-            header { padding: 12px 10px; }
-            header h1 { font-size: 16px; }
-            header p { font-size: 11px; }
-            .btn-header { font-size: 10px; padding: 6px 12px; }
-            .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-            .stat-card { padding: 10px; }
-            .stat-label { font-size: 10px; }
-            .stat-val { font-size: 16px; }
-            .tabs { gap: 3px; padding: 3px; }
-            .tab { font-size: 11px; padding: 7px 10px; }
-            .env-card { padding: 14px; }
-            .env-card .num { font-size: 18px; }
-            .section-heading { font-size: 14px; }
-            .card-box { padding: 10px; }
-            .btn { font-size: 12px; padding: 7px 12px; }
-            .modal-body { padding: 16px; }
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            header { flex-direction: column; text-align: center; gap: 20px; }
         }
-
-        /* Mobile: 480px and below */
-        @media (max-width: 480px) {
-            .container { padding: 8px; padding-bottom: 60px; }
-            header { padding: 10px 8px; flex-direction: column; gap: 10px; text-align: center; }
-            header h1 { font-size: 14px; }
-            header p { font-size: 10px; }
-            .btn-header { font-size: 9px; padding: 5px 10px; }
-            .summary-grid { grid-template-columns: 1fr; gap: 6px; }
-            .stat-card { padding: 8px; }
-            .stat-label { font-size: 9px; }
-            .stat-val { font-size: 14px; margin-top: 4px; }
-            .tabs { gap: 2px; padding: 2px; flex-wrap: wrap; }
-            .tab { font-size: 10px; padding: 6px 8px; flex: 1; min-width: 80px; }
-            .env-card { padding: 12px; margin-bottom: 10px; }
-            .env-card .num { font-size: 16px; }
-            .env-card h3 { font-size: 15px; }
-            .section-heading { font-size: 13px; }
-            .card-box { padding: 8px; }
-            .btn { font-size: 11px; padding: 6px 10px; }
-            .modal-body { padding: 12px; max-height: 70vh; }
-            .table-wrap table { min-width: 350px; font-size: 11px; }
-            .table-wrap th, .table-wrap td { padding: 6px 4px; }
-            .inp-sm { width: 60px; }
-            .update-bar { flex-wrap: wrap; padding: 8px; }
-            .update-bar button { font-size: 10px; padding: 6px 10px; }
-            #ganttChart > div { grid-template-columns: 80px 1fr !important; }
-        }
-    
     </style>
 </head>
-<body id="bodyRoot">
-    <div class="what-if-banner" data-i18n="sandbox_active">⚠️ Sandbox mode active - changes not saved</div>
-    <div class="container">
-        <header>
-            <div>
-                <h1 data-i18n="app_title">💰 Salary Planner</h1>
-                <p style="opacity: 0.9; font-size: 14px;" data-i18n="real_time_plan">Real-Time Financial Plan</p>
-            </div>
-            <div style="display: flex; gap: 10px;">
-                <button class="btn btn-header" id="langBtn" onclick="toggleLang()">English</button>
-                <button class="btn btn-header" onclick="toggleWhatIf()" data-i18n="act_sandbox">Activate What-If</button>
-                <button class="btn btn-header" onclick="exportData()" data-i18n="export">Export</button>
-                <button class="btn btn-header" onclick="document.getElementById('fileInput').click()" data-i18n="import">Import</button>
-                <input type="file" id="fileInput" style="display:none" onchange="importData(event)">
-            </div>
-        </header>
+<body>
 
-        <div id="overAllocWarning" class="warning-strip" style="display:none; background:#fef2f2; border:1px solid #fee2e2; color:#991b1b; padding:15px; border-radius:12px; margin-bottom:25px; font-weight:700; align-items:center; gap:12px; border-left:5px solid var(--danger);">
-            <span style="font-size: 20px;">⚠️</span>
-            <span data-i18n="warning_overAllocated">Warning: Total allocations exceed net monthly salary</span>
+<div class="what-if-banner" data-i18n="sandbox_active">⚠️ Sandbox mode active - changes not saved</div>
+
+<div class="container">
+    <header>
+        <div>
+            <h1 data-i18n="app_title">💰 Salary Planner</h1>
+            <p data-i18n="real_time_plan">Real-Time Financial Plan</p>
         </div>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn btn-header" id="importBtn" data-i18n="import">Import</button>
+            <button class="btn btn-header" id="exportBtn" data-i18n="export">Export</button>
+            <button class="btn btn-header" id="sandboxBtn" data-i18n="act_sandbox">Activate What-If</button>
+            <button class="btn btn-header" id="langBtn">English</button>
+            <input type="file" id="fileInput" style="display:none" onchange="importData(event)">
+        </div>
+    </header>
 
-        <div class="summary-grid" id="highLevelSummary"></div>
-
-        <nav class="tabs">
-            <button class="tab active" id="tab-plan" onclick="showTab('plan')" data-i18n="tab_env">The Envelopes</button>
-            <button class="tab" id="tab-visual" onclick="showTab('visual')" data-i18n="tab_visual">Visual Timeline</button>
-            <button class="tab" id="tab-settings" onclick="showTab('settings')" data-i18n="tab_settings">Settings</button>
-        </nav>
-
-        <main id="planSection" class="pane active">
-            <div class="card-box" style="background:var(--card-bg); padding:25px; border-radius:var(--radius); box-shadow:var(--shadow); margin-bottom:30px;">
-                <div style="display:flex; justify-content:space-between; align-items: center;">
-                    <h2 class="section-heading" data-i18n="sec_envelopes">Monthly Envelopes</h2>
-                    <button class="btn btn-primary" onclick="openAddModal()" data-i18n="btn_add_env">+ Add Envelope</button>
-                </div>
-                <div id="summaryTableContainer" class="table-wrap" style="overflow-x:auto; margin-top:20px; border-radius:12px; border:1px solid #e2e8f0;"></div>
-            </div>
-            <div id="categorySections"></div>
-        </main>
-
-        <main id="visualSection" class="pane">
-            <div class="card-box">
-                <h2 class="section-heading" data-i18n="sec_timeline">Financial Freedom Timeline</h2>
-                <div id="ganttChart" style="display:flex; flex-direction:column; gap:15px;"></div>
-            </div>
-        </main>
-
-        <main id="settingsSection" class="pane">
-            <div class="card-box">
-                <h2 class="section-heading" data-i18n="sec_config">Configuration</h2>
-                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
-                    <div>
-                        <label style="display:block; margin-bottom:8px; font-weight:700; font-size:14px;" data-i18n="lbl_monthly_salary">Monthly Salary</label>
-                        <input type="number" id="cfgSalary" class="field" onchange="updateGlobal()">
-                    </div>
-                    <div>
-                        <label style="display:block; margin-bottom:8px; font-weight:700; font-size:14px;" data-i18n="lbl_start_date">Plan Start Date</label>
-                        <input type="date" id="cfgDate" class="field" onchange="updateGlobal()">
-                    </div>
-                </div>
-                <div style="margin-top:30px; border-top:1px solid #f1f5f9; padding-top:20px;">
-                    <button class="btn btn-danger" onclick="resetAll()" data-i18n="btn_reset">Reset All Data</button>
-function renderCards        </main>
+    <div id="overAllocWarning" style="display:none; background:var(--danger); color:white; padding:15px; border-radius:12px; margin-bottom:20px; font-weight:bold; align-items:center; gap:10px;">
+        ⚠️ <span data-i18n="warning_overAllocated">Warning: Total allocations exceed net monthly salary</span>
     </div>
 
-    <!-- Modal -->
-                                    <!-- Load Demo Data Button -->
-                                    <button class="btn" onclick="loadDemoData()" style="background:var(--warning); color:white; margin-top:15px; width:100%;" data-i18n="load_demo">🔄 Load Clean Demo Data</button>
-    <div id="envModal" class="modal">
-        <form class="modal-body" onsubmit="saveEnv(event)">
-            <h2 id="modalTitle" style="margin-bottom:25px;">Add Envelope</h2>
-            <div style="display:grid; gap:20px;">
-                <div>
-                    <label style="display:block; margin-bottom:8px; font-weight:700;" data-i18n="col_name">Name</label>
-                    <input type="text" id="mName" class="field" required>
-                </div>
-                <div>
-                    <label style="display:block; margin-bottom:8px; font-weight:700;" data-i18n="col_type">Type</label>
-                    <select id="mType" class="field" onchange="toggleModalFields()">
-                        <option value="budget" data-i18n="budget">Budget</option>
-                        <option value="debt" data-i18n="debt">Debt</option>
-                        <option value="goal" data-i18n="goal">Goal</option>
-                    </select>
-                </div>
-                <div id="targetGrp">
-                    <label style="display:block; margin-bottom:8px; font-weight:700;" data-i18n="col_target">Target Amount</label>
-                    <input type="number" id="mTarget" class="field" oninput="updateModalSuggest()">
-                </div>
-                <div id="dueGrp">
-                    <label style="display:block; margin-bottom:8px; font-weight:700;" data-i18n="col_due">Due Date</label>
-                    <input type="date" id="mDue" class="field" onchange="updateModalSuggest()"> <div id="modalSuggest" style="display:none;" class="suggest-tip"></div>
-                </div>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-                    <div>
-                        <label style="display:block; margin-bottom:8px; font-weight:700;" data-i18n="col_current">Initial Balance</label>
-                        <input type="number" id="mCurrent" class="field" value="0">
-                    </div>
-                    <div>
-                        <label style="display:block; margin-bottom:8px; font-weight:700;" data-i18n="col_alloc">Monthly Deposit</label>
-                        <input type="number" id="mMonthly" class="field" value="0">
-                    </div>
+    <div class="summary-grid" id="highLevelSummary"></div>
+
+    <div class="tabs">
+        <button class="tab active" id="tab-env" onclick="showTab('env')" data-i18n="tab_env">The Envelopes</button>
+        <button class="tab" id="tab-visual" onclick="showTab('visual')" data-i18n="tab_visual">Visual Timeline</button>
+        <button class="tab" id="tab-settings" onclick="showTab('settings')" data-i18n="tab_settings">Settings</button>
+    </div>
+
+    <div id="envSection" class="pane active">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h2 data-i18n="sec_envelopes">Monthly Envelopes</h2>
+            <button class="btn" style="background:var(--primary); color:white;" onclick="openAddModal()" data-i18n="btn_add_env">+ Add Envelope</button>
+        </div>
+        <div id="summaryTableContainer" style="margin-bottom:30px; overflow-x:auto; background:white; padding:20px; border-radius:16px; box-shadow:var(--shadow);"></div>
+        <div id="categorySections"></div>
+    </div>
+
+    <div id="visualSection" class="pane">
+        <h2 data-i18n="sec_timeline" style="margin-bottom:20px;">Financial Freedom Timeline</h2>
+        <div id="ganttChart" style="background:white; padding:30px; border-radius:16px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:20px;"></div>
+    </div>
+
+    <div id="settingsSection" class="pane">
+        <div style="max-width:600px;">
+            <h2 data-i18n="sec_config" style="margin-bottom:20px;">Configuration</h2>
+            <div style="background:white; padding:30px; border-radius:16px; box-shadow:var(--shadow);">
+                <label data-i18n="lbl_monthly_salary">Monthly Salary</label>
+                <input type="number" id="cfgSalary" class="field" onchange="updateGlobal()">
+                
+                <label data-i18n="lbl_start_date">Plan Start Date</label>
+                <input type="date" id="cfgDate" class="field" onchange="updateGlobal()">
+                
+                <div style="margin-top:30px; display:flex; gap:15px;">
+                    <button class="btn" style="background:var(--danger); color:white;" onclick="resetAll()" data-i18n="btn_reset">Reset All Data</button>
+                    <button class="btn" style="background:var(--warning); color:white;" id="demoBtn">🔄 Load Clean Demo Data</button>
                 </div>
             </div>
-            <div style="margin-top:35px; display:flex; gap:12px; justify-content: flex-end;">
-                <button type="button" class="btn btn-outline" onclick="closeModal()" data-i18n="btn_cancel">Cancel</button>
-                <button type="submit" class="btn btn-primary" data-i18n="btn_save">Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<div id="envModal" class="modal">
+    <div class="modal-body">
+        <h2 id="modalTitle" style="margin-bottom:25px;">Add Envelope</h2>
+        <form id="envForm">
+            <label data-i18n="col_name">Name</label>
+            <input type="text" id="mName" class="field" required>
+            
+            <label data-i18n="col_type">Type</label>
+            <select id="mType" class="field" onchange="toggleModalFields()">
+                <option value="budget" data-i18n="budget">Budget</option>
+                <option value="debt" data-i18n="debt">Debt</option>
+                <option value="goal" data-i18n="goal">Goal</option>
+            </select>
+
+            <div id="targetGrp">
+                <label data-i18n="col_target">Target Amount</label>
+                <input type="number" id="mTarget" class="field" oninput="updateModalSuggest()">
+            </div>
+
+            <div id="dueGrp">
+                <label data-i18n="col_due">Due Date</label>
+                <input type="date" id="mDue" class="field" onchange="updateModalSuggest()">
+            </div>
+
+            <div id="modalSuggest" style="margin-bottom:15px; padding:10px; background:#f0fdf4; border-radius:8px; font-size:13px; display:none;"></div>
+
+            <label data-i18n="col_current">Initial Balance</label>
+            <input type="number" id="mCurrent" class="field" value="0">
+
+            <label data-i18n="col_alloc">Monthly Deposit</label>
+            <input type="number" id="mMonthly" class="field" value="0">
+
+            <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:20px;">
+                <button type="button" class="btn" onclick="closeModal()" data-i18n="btn_cancel">Cancel</button>
+                <button type="submit" class="btn" style="background:var(--primary); color:white;" data-i18n="btn_save">Save Changes</button>
             </div>
         </form>
     </div>
+</div>
 
-    <!-- History Modal -->
-    <div id="historyModal" class="modal" onclick="if(event.target === this) document.getElementById('historyModal').classList.remove('active');">
-            <div class="modal-body">
-                        <h2 id="historyModalTitle" style="margin-bottom:20px; font-weight:800;" data-i18n="lbl_transaction_history">Transaction History</h2>
-                        <div id="historyContent" style="max-height:400px; overflow-y:auto;"></div>
-                        <div style="margin-top:20px; display:flex; gap:10px; justify-content:flex-end;">
-                                        <button type="button" class="btn btn-outline" onclick="document.getElementById('historyModal').classList.remove('active');" data-i18n="btn_cancel">Cancel</button>
-                                    </div>
-                    </div>
-        </div>
+<div id="historyModal" class="modal">
+    <div class="modal-body">
+        <h2 data-i18n="lbl_transaction_history" style="margin-bottom:20px;">Transaction History</h2>
+        <div id="historyContent"></div>
+        <button class="btn" style="width:100%; margin-top:20px;" onclick="document.getElementById('historyModal').classList.remove('active')" data-i18n="btn_cancel">Close</button>
+    </div>
+</div>
 
-    <script>
-        // Data and i18n logic remains mostly the same, ensuring compatibility
-        let realData = { salary: 20000, startDate: new Date().toISOString().split('T')[0], envelopes: [] };
-        let sandboxData = null;
-        let isWhatIf = false;
-        let editId = null;
+<script>
+    let realData = { salary: 20000, startDate: new Date().toISOString().split('T')[0], envelopes: [] };
+    let sandboxData = null;
+    let isWhatIf = false;
+    let editId = null;
 
-        const resources = {
-            en: { translation: {
-                app_title: "💰 Salary Planner",
-                real_time_plan: "Real-Time Financial Plan",
-                act_sandbox: "Activate What-If",
-                sandbox_active: "⚠️ Sandbox mode active - changes not saved",
-                tab_env: "The Envelopes",
-                tab_visual: "Visual Timeline",
-                tab_settings: "Settings",
-                sec_envelopes: "Monthly Envelopes",
-                btn_add_env: "+ Add Envelope",
-                col_name: "Name", col_type: "Type", col_target: "Target", col_current: "Current", col_alloc: "Monthly", col_months: "Months", col_due: "Due Date",
-                budget: "Budget", debt: "Debt", goal: "Goal",
-                lbl_salary: "Total Salary", lbl_debt_pay: "Debt Payment", lbl_goal_sav: "Goal Savings", lbl_unallocated: "Unallocated",
-                lbl_total_monthly: "Total Monthly",
-                cat_budget: "Daily Expenses", cat_debt: "Debt Payoff", cat_goal: "Savings Goals",
-                lbl_months_due: "months left", lbl_suggested: "Suggested:", warn_short: "Deposit is too low",
-                lbl_mon_ded: "Deposit", lbl_permanent: "Permanent", lbl_mon_left: "months left", lbl_remaining: "Remaining", col_remaining: "Remaining",
-                quick_dep: "Quick Deposit", btn_update: "Add", btn_edit: "Edit", btn_save: "Save", btn_cancel: "Cancel", btn_reset: "Reset All",
-                confirm_del: "Are you sure you want to delete this envelope?",
-                confirm_reset: "RESET ALL DATA? This cannot be undone.",
-            sec_timeline: "Financial Freedom Timeline", sec_config: "Configuration", lbl_monthly_salary: "Monthly Salary", lbl_start_date: "Plan Start Date",
-                            488
-                                                    load_demo: "🔄 Load Clean Demo Data",
-                                    confirm_load_demo: "Load demo data? This will replace current data.",
-                                : "History", lbl_transaction_history: "Transaction History", lbl_created_on: "Created on", lbl_initial_value: "Initial value", lbl_deposit_on: "Deposit on", lbl_amount: "Amount", lbl_no_history: "No transaction history yet",
-                modal_add: "Create New Envelope", modal_update: "Update Envelope", export: "Export", import: "Import", warning_overAllocated: "Total monthly allocations exceed salary", empty_state: "No envelopes yet", empty_state_hint: "Click + Add Envelope to get started", alloc_pct: "Allocated"
-            }},
-            ar: { translation: {
-                app_title: "💰 مخطط الراتب الذكي",
-                real_time_plan: "خطة مالية فورية",
-                act_sandbox: "تفعيل وضع التجربة",
-                sandbox_active: "⚠️ وضع التجربة نشط - التغييرات لن تُحفظ",
-                tab_env: "الأظرف المالية",
-                tab_visual: "الجدول الزمني",
-                tab_settings: "الإعدادات",
-                sec_envelopes: "توزيع الأظرف الشهرية",
-                btn_add_env: "+ إضافة ظرف جديد",
-                col_name: "الاسم", col_type: "النوع", col_target: "الهدف", col_current: "الحالي", col_alloc: "الشهري", col_months: "الشهور", col_due: "التاريخ",
-                budget: "مصاريف", debt: "ديون", goal: "ادخار",
-                lbl_salary: "إجمالي الراتب", lbl_debt_pay: "تسديد الديون", lbl_goal_sav: "أهداف الادخار", lbl_unallocated: "المبلغ المتبقي",
-                lbl_total_monthly: "إجمالي الاستقطاع",
-                cat_budget: "أظرف المصاريف التشغيلية", cat_debt: "أظرف سداد الديون", cat_goal: "أظرف الأهداف والادخار",
-                lbl_months_due: "أشهر متبقية", lbl_suggested: "المقترح:", warn_short: "المبلغ أقل من المطلوب",
-                lbl_mon_ded: "الاستقطاع", lbl_permanent: "دائم", lbl_mon_left: "شهور متبقية", lbl_remaining: "المتبقي", col_remaining: "المتبقي",
-                quick_dep: "إيداع سريع", btn_update: "إضافة", btn_edit: "تعديل", btn_save: "حفظ", btn_cancel: "إلغاء", btn_reset: "إعادة ضبط",
-                confirm_del: "هل أنت متأكد من حذف هذا الظرف؟",
-                confirm_reset: "هل تريد مسح جميع البيانات؟ لا يمكن التراجع.",
-                            sec_timeline: "الجدول الزمني للحرية المالية", sec_config: "الإعدادات", lbl_monthly_salary: "الراتب الشهري", lbl_start_date: "تاريخ بدء الخطة",
-modal_add: "إنشاء ظرف جديد", modal_update: "تحديث بيانات الظرف", export: "تصدير", import: "استيراد", warning_overAllocated: "الاستقطاعات الشهرية تجاوزت الراتب", empty_state: "لا توجد أظرف بعد", empty_state_hint: "اضغط + إضافة ظرف جديد للبدء", alloc_pct: "مخصص"
-                                    load_demo: "🔄 تحميل بيانات تجريبية نظيفة",
-                        confirm_load_demo: "هل تريد تحميل البيانات التجريبية؟ سيتم استبدال البيانات الحالية.",
-                
-            }}
-        };
-                modal_add: "إنشاء ظرف جديد", modal_update: "تحديث بيانات الظرف", export: "تصدير", import: "استيراد", warning_overAllocated: "الاستقطاعات الشهرية تجاوزت الراتب", empty_state: "لا توجد أظرف بعد", empty_state_hint: "اضغط + إضافة ظرف جديد للبدء", alloc_pct: "مخصص", btn_history: "السجل", lbl_transaction_history: "سجل العمليات", lbl_created_on: "تم الإنشاء في", lbl_initial_value: "القيمة الابتدائية", lbl_deposit_on: "إيداع في", lbl_amount: "المبلغ", lbl_no_history: "لا يوجد سجل بعد"        i18next.init({ lng: 'ar', resources }).then(() => { updateContent(); load(); });
+    const resources = {
+        en: { translation: {
+            app_title: "💰 Salary Planner",
+            real_time_plan: "Real-Time Financial Plan",
+            act_sandbox: "Activate What-If",
+            sandbox_active: "⚠️ Sandbox mode active - changes not saved",
+            tab_env: "The Envelopes",
+            tab_visual: "Visual Timeline",
+            tab_settings: "Settings",
+            sec_envelopes: "Monthly Envelopes",
+            btn_add_env: "+ Add Envelope",
+            col_name: "Name", col_type: "Type", col_target: "Target", col_current: "Current", col_alloc: "Monthly", col_months: "Months", col_due: "Due Date",
+            budget: "Budget", debt: "Debt", goal: "Goal",
+            lbl_salary: "Total Salary", lbl_debt_pay: "Debt Payment", lbl_goal_sav: "Goal Savings", lbl_unallocated: "Unallocated",
+            lbl_total_monthly: "Total Monthly", cat_budget: "Daily Expenses", cat_debt: "Debt Payoff", cat_goal: "Savings Goals",
+            lbl_months_due: "months left", lbl_suggested: "Suggested:", warn_short: "Deposit is too low",
+            lbl_mon_ded: "Deposit", lbl_permanent: "Permanent", lbl_mon_left: "months left", lbl_remaining: "Remaining",
+            quick_dep: "Quick Deposit", btn_update: "Add", btn_edit: "Edit", btn_save: "Save", btn_cancel: "Cancel", btn_reset: "Reset All",
+            confirm_del: "Are you sure?", confirm_reset: "RESET ALL DATA?", sec_timeline: "Financial Freedom Timeline",
+            sec_config: "Configuration", lbl_monthly_salary: "Monthly Salary", lbl_start_date: "Plan Start Date",
+            export: "Export", import: "Import", warning_overAllocated: "Total monthly allocations exceed salary",
+            empty_state: "No envelopes yet", empty_state_hint: "Click + Add Envelope to get started", alloc_pct: "Allocated",
+            lbl_transaction_history: "Transaction History", lbl_created_on: "Created", lbl_initial_value: "Initial", lbl_deposit_on: "Deposit",
+            lbl_no_history: "No history", modal_add: "New Envelope", modal_update: "Update Envelope", btn_history: "History",
+            confirm_load_demo: "Load demo data?"
+        }},
+        ar: { translation: {
+            app_title: "💰 مخطط الراتب الذكي",
+            real_time_plan: "خطة مالية فورية",
+            act_sandbox: "تفعيل وضع التجربة",
+            sandbox_active: "⚠️ وضع التجربة نشط - التغييرات لن تُحفظ",
+            tab_env: "الأظرف المالية",
+            tab_visual: "الجدول الزمني",
+            tab_settings: "الإعدادات",
+            sec_envelopes: "توزيع الأظرف الشهرية",
+            btn_add_env: "+ إضافة ظرف جديد",
+            col_name: "الاسم", col_type: "النوع", col_target: "الهدف", col_current: "الحالي", col_alloc: "الشهري", col_months: "الشهور", col_due: "التاريخ",
+            budget: "مصاريف", debt: "ديون", goal: "ادخار",
+            lbl_salary: "إجمالي الراتب", lbl_debt_pay: "تسديد الديون", lbl_goal_sav: "أهداف الادخار", lbl_unallocated: "المبلغ المتبقي",
+            lbl_total_monthly: "إجمالي الاستقطاع", cat_budget: "أظرف المصاريف", cat_debt: "أظرف سداد الديون", cat_goal: "أظرف الأهداف والادخار",
+            lbl_months_due: "أشهر متبقية", lbl_suggested: "المقترح:", warn_short: "المبلغ أقل من المطلوب",
+            lbl_mon_ded: "الاستقطاع", lbl_permanent: "دائم", lbl_mon_left: "شهور متبقية", lbl_remaining: "المتبقي",
+            quick_dep: "إيداع سريع", btn_update: "إضافة", btn_edit: "تعديل", btn_save: "حفظ", btn_cancel: "إلغاء", btn_reset: "إعادة ضبط",
+            confirm_del: "هل أنت متأكد؟", confirm_reset: "إعادة ضبط المصنع؟", sec_timeline: "الجدول الزمني للحرية المالية",
+            sec_config: "الإعدادات", lbl_monthly_salary: "الراتب الشهري", lbl_start_date: "تاريخ بدء الخطة",
+            export: "تصدير", import: "استيراد", warning_overAllocated: "الاستقطاعات تجاوزت الراتب",
+            empty_state: "لا توجد أظرف", empty_state_hint: "اضغط + إضافة ظرف جديد", alloc_pct: "مخصص",
+            lbl_transaction_history: "سجل العمليات", lbl_created_on: "تم الإنشاء", lbl_initial_value: "القيمة الابتدائية", lbl_deposit_on: "إيداع",
+            lbl_no_history: "لا يوجد سجل", modal_add: "إنشاء ظرف جديد", modal_update: "تحديث ظرف", btn_history: "السجل",
+            confirm_load_demo: "تحميل بيانات تجريبية؟"
+        }}
+    };
 
-        function toggleLang() {
-            i18next.changeLanguage(i18next.language === 'ar' ? 'en' : 'ar').then(() => {
-                document.documentElement.dir = i18next.language === 'ar' ? 'rtl' : 'ltr';
-                document.getElementById('langBtn').innerText = i18next.language === 'ar' ? 'English' : 'العربية';
-                updateContent();
-                render();
-            });
-        }
+    i18next.init({ lng: 'ar', resources }).then(() => {
+        updateContent();
+        load();
+    });
 
-        function updateContent() {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                el.innerText = i18next.t(el.getAttribute('data-i18n'));
-            });
-        }
-
-        function load() {
-            const saved = localStorage.getItem('salary_planner_v7');
-            if(saved) realData = JSON.parse(saved);
-            document.getElementById('cfgSalary').value = realData.salary;
-            document.getElementById('cfgDate').value = realData.startDate;
+    function toggleLang() {
+        i18next.changeLanguage(i18next.language === 'ar' ? 'en' : 'ar').then(() => {
+            document.documentElement.dir = i18next.language === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').innerText = i18next.language === 'ar' ? 'English' : 'العربية';
+            updateContent();
             render();
-        }
+        });
+    }
 
-        function render() {
-            const d = isWhatIf ? sandboxData : realData;
-            let ts = { budget: 0, debt: 0, goal: 0, cur: 0, tar: 0 };
-            d.envelopes.forEach(e => {
-                ts[e.type] += e.monthly;
-                ts.cur += e.current;
-                ts.tar += (e.type !== 'budget' ? e.target : 0);
-            });
+    function updateContent() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            el.innerText = i18next.t(el.getAttribute('data-i18n'));
+        });
+    }
 
-            const unalloc = d.salary - (ts.budget + ts.debt + ts.goal);
-            document.getElementById('overAllocWarning').style.display = unalloc < 0 ? 'flex' : 'none';
+    function load() {
+        const saved = localStorage.getItem('salary_planner_v7');
+        if(saved) realData = JSON.parse(saved);
+        document.getElementById('cfgSalary').value = realData.salary;
+        document.getElementById('cfgDate').value = realData.startDate;
+        render();
+    }
 
-            document.getElementById('highLevelSummary').innerHTML = `
-                <div class="stat-card">
-                    <div class="stat-label">${i18next.t('lbl_salary')}</div>
-                    <div class="stat-val num">${d.salary.toLocaleString()}</div>
-                </div>
-                <div class="stat-card" style="border-color: var(--danger);">
-                    <div class="stat-label">${i18next.t('lbl_debt_pay')}</div>
-                    <div class="stat-val num">${ts.debt.toLocaleString()}</div>
-                </div>
-                <div class="stat-card" style="border-color: var(--success);">
-                    <div class="stat-label">${i18next.t('lbl_goal_sav')}</div>
-                    <div class="stat-val num">${ts.goal.toLocaleString()}</div>
-                </div>
-                <div class="stat-card" style="border-color: var(--primary);">
-                    <div class="stat-label">${i18next.t('lbl_unallocated')}</div>
-                    <div class="stat-val num" style="color: ${unalloc < 0 ? 'var(--danger)' : 'inherit'}">
-                        ${unalloc.toLocaleString()} <span style="font-size:13px;color:var(--text-muted);font-weight:600;">(${Math.round((d.salary-unalloc)/d.salary*100)||0}% ${i18next.t('alloc_pct')})</span>
-                    </div>
-                </div>
-            <div class="stat-card" style="border-color: var(--warning);">
-                <div class="stat-label">${i18next.t('lbl_remaining')}</div>
-                <div class="stat-val num">${(ts.tar - ts.cur).toLocaleString()}</div>
+    function render() {
+        const d = isWhatIf ? sandboxData : realData;
+        let ts = { budget: 0, debt: 0, goal: 0, cur: 0, tar: 0 };
+        d.envelopes.forEach(e => {
+            ts[e.type] += e.monthly;
+            ts.cur += e.current;
+            ts.tar += (e.type !== 'budget' ? e.target : 0);
+        });
+        const unalloc = d.salary - (ts.budget + ts.debt + ts.goal);
+        document.getElementById('overAllocWarning').style.display = unalloc < 0 ? 'flex' : 'none';
+        
+        document.getElementById('highLevelSummary').innerHTML = `
+            <div class="stat-card">
+                <div class="stat-label">${i18next.t('lbl_salary')}</div>
+                <div class="stat-val">${d.salary.toLocaleString()}</div>
             </div>
-            `;
+            <div class="stat-card" style="border-color: var(--danger);">
+                <div class="stat-label">${i18next.t('lbl_debt_pay')}</div>
+                <div class="stat-val">${ts.debt.toLocaleString()}</div>
+            </div>
+            <div class="stat-card" style="border-color: var(--success);">
+                <div class="stat-label">${i18next.t('lbl_goal_sav')}</div>
+                <div class="stat-val">${ts.goal.toLocaleString()}</div>
+            </div>
+            <div class="stat-card" style="border-color: var(--primary);">
+                <div class="stat-label">${i18next.t('lbl_unallocated')}</div>
+                <div class="stat-val" style="color: ${unalloc < 0 ? 'var(--danger)' : 'inherit'}">
+                    ${unalloc.toLocaleString()}
+                    <span style="font-size:13px;color:var(--text-muted);font-weight:600;">(${Math.round((d.salary-unalloc)/d.salary*100)||0}% ${i18next.t('alloc_pct')})</span>
+                </div>
+            </div>
+        `;
+        renderTable(d);
+        renderCards(d);
+        renderTimeline();
+    }
 
-            renderTable(d);
-            renderCards(d);
-            renderTimeline();
+    function renderTable(d) {
+        let h = `<table><thead><tr>
+            <th>${i18next.t('col_name')}</th><th>${i18next.t('col_type')}</th>
+            <th>${i18next.t('col_target')}</th><th>${i18next.t('col_current')}</th>
+            <th>${i18next.t('col_alloc')}</th><th>${i18next.t('col_months')}</th>
+        </tr></thead><tbody>`;
+        d.envelopes.forEach(e => {
+            const rem = Math.max(0, (e.target || 0) - e.current);
+            const months = e.monthly > 0 ? Math.ceil(rem / e.monthly) : '-';
+            h += `<tr><td>${e.name}</td><td><span class="badge badge-${e.type}">${i18next.t(e.type)}</span></td>
+                <td>${(e.target || 0).toLocaleString()}</td><td>${e.current.toLocaleString()}</td>
+                <td>${e.monthly.toLocaleString()}</td><td>${months}</td></tr>`;
+        });
+        h += `</tbody></table>`;
+        document.getElementById('summaryTableContainer').innerHTML = h;
+    }
+
+    function renderCards(d) {
+        const cont = document.getElementById('categorySections');
+        cont.innerHTML = '';
+        if(d.envelopes.length === 0) {
+            cont.innerHTML = `<div style="text-align:center;padding:60px 20px;color:var(--text-muted);"><h3>${i18next.t('empty_state')}</h3></div>`;
+            return;
         }
-
-        function renderTable(d) {
-            let h = `<table><thead><tr>
-                <th>${i18next.t('col_name')}</th><th>${i18next.t('col_type')}</th>
-                <th>${i18next.t('col_target')}</th><th>${i18next.t('col_current')}</th>
-                <th>${i18next.t('col_alloc')}</th><th>${i18next.t('col_months')}</th>
-                            <th>${i18next.t('col_due')}</th><th>${i18next.t('col_remaining')}</th></tr></thead><tbody>`;
-            d.envelopes.forEach(e => {
-                const rem = Math.max(0, (e.target || 0) - e.current);
-                const months = e.monthly > 0 ? Math.ceil(rem / e.monthly) : (e.type === 'budget' ? '-' : '∞');
-                h += `<tr><td>${e.name}</td><td><span class="badge badge-${e.type}">${i18next.t(e.type)}</span></td>
-                    <td class="num num-cell">${(e.target || 0).toLocaleString()}</td>
-                    <td class="num num-cell">${e.current.toLocaleString()}</td>
-                    <td class="num num-cell">${e.monthly.toLocaleString()}</td>
-                    <td class="num num-cell">${months}</td><td>${e.dueDate || '-'}</td><td class="num num-cell" style="color:${rem===0?'var(--success)':'inherit'}">${e.type==='budget'?'-':rem.toLocaleString()}</td></tr>`;
-            });
-            h += `</tbody></table>`;
-            document.getElementById('summaryTableContainer').innerHTML = h;
-        }
-
-        function renderCards(d) {
-            const cont = document.getElementById('categorySections');
-            cont.innerHTML = ''; if(d.envelopes.length === 0) { cont.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-muted);"><div style="font-size:64px;">📭</div><h3 style="margin-top:16px;font-size:20px;font-weight:800;">' + i18next.t('empty_state') + '</h3><p style="margin-top:8px;font-size:14px;">' + i18next.t('empty_state_hint') + '</p></div>'; return; }
-            ['budget', 'debt', 'goal'].forEach(type => {
-                const envs = d.envelopes.filter(e => e.type === type);
-                if(envs.length === 0) return;
-                const typeTotal = envs.reduce((a, c) => a + c.monthly, 0);
-                const block = document.createElement('div');
-                block.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; margin: 40px 0 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px;">
-                        <h3 style="font-size: 20px; font-weight: 800;">${i18next.t('cat_' + type)}</h3>
-                        <span style="font-weight: 800; color: var(--primary);">${i18next.t('lbl_total_monthly')}: ${typeTotal.toLocaleString()}</span>
-                    </div>
-                    <div class="env-grid" id="grid-${type}"></div>
-                `;
-                cont.appendChild(block);
-                const grid = document.getElementById('grid-' + type);
-                envs.forEach(e => {
-                    const rem = Math.max(0, (e.target || 0) - e.current);
-                    const prog = e.type === 'budget' ? 100 : Math.min(100, (e.current / (e.target || 1)) * 100);
-                    let dueInfo = '', suggestInfo = '';
-                    if(e.dueDate) {
-                        const mDue = getMonthsBetween(d.startDate, e.dueDate);
-                        dueInfo = `<div style="font-size:12px; margin-top:5px; color:var(--text-muted)">📅 ${e.dueDate} (${mDue} ${i18next.t('lbl_months_due')})</div>`;
-                        if(mDue > 0) {
-                            const suggested = Math.ceil(rem / mDue);
-                            const isShort = e.monthly < suggested;
-                            suggestInfo = `<div class="suggest-tip ${isShort ? 'suggest-warn' : ''}"><strong>${i18next.t('lbl_suggested')}</strong> ${suggested.toLocaleString()} ${isShort ? '⚠️ ' + i18next.t('warn_short') : ''}</div>`;
-                        }
-                    }
-
-                    grid.innerHTML += `
-                        <div class="env-card ${e.type}">
-                            <div style="position: absolute; right: 15px; top: 15px; display:flex; flex-direction:column; gap:4px;">
-                                <button onclick="movePrio(${e.id}, -1)" style="border:none; background:none; cursor:pointer; opacity:0.5;">▲</button>
-                                <button onclick="movePrio(${e.id}, 1)" style="border:none; background:none; cursor:pointer; opacity:0.5;">▼</button>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; align-items: flex-start;">
-                                <div style="flex:1">
-                                    <span class="badge badge-${e.type}" style="margin-bottom:8px;">${i18next.t(e.type)}</span>
-                                    <div style="font-weight:800; font-size:20px; color:var(--text-main);">${e.name}</div>
-                                    ${dueInfo}
-                                </div>
-                                <div style="display:flex; gap:8px;">
-                                    <button class="btn btn-outline" style="padding:6px 12px;" onclick="openEditModal(${e.id})">${i18next.t('btn_edit')}</button>
-                                    <button class="btn btn-danger" style="padding:6px 12px;" onclick="delEnv(${e.id})">✕</button>
-                                </div>
-                            </div>
-                            <button class="btn btn-outline" style="padding:6px 12px;" onclick="showHistory(${e.id})">${i18next.t('487
-                                                                                                                                 ')}</button>
-                        <div class="num" style="font-size: 24px; font-weight:800; margin-top:20px;">
-                                ${e.current.toLocaleString()} <span style="font-size:14px; color:var(--text-muted); font-weight:500;">/ ${(e.target || 0).toLocaleString()}</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width:${prog}%; background:var(--${e.type==='goal'?'success':e.type==='debt'?'danger':'warning'});"></div>
-                            </div>
-                            <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700;">
-                                <span>${i18next.t('lbl_mon_ded')}: ${e.monthly.toLocaleString()}</span>
-                                <span>${e.type==='budget' ? i18next.t('lbl_permanent') : Math.ceil(rem/e.monthly) + ' ' + i18next.t('lbl_mon_left')}</span>
-                            </div>
-     ${e.type !== 'budget' ? `<div style="margin-top:10px; padding:10px 12px; background:#f8fafc; border-radius:10px; border:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;"><span style="font-size:12px; font-weight:700; color:var(--text-muted);">${i18next.t('lbl_remaining')}</span><span style="font-size:18px; font-weight:800; color:${rem===0?'var(--success)':'var(--primary)'}">${rem.toLocaleString()}</span></div>` : ''}
-                            ${suggestInfo}
-                            <div class="update-bar" style="margin-top:20px; padding-top:15px; border-top:1px solid #f1f5f9; display:flex; gap:10px; align-items:center;">
-                                <span style="font-size: 12px; font-weight: 700;">${i18next.t('quick_dep')}:</span>
-                                <input type="number" id="q-${e.id}" class="inp-sm" value="${e.monthly}" style="width:80px; padding:6px; border-radius:8px; border:1px solid #e2e8f0;">
-                                <button class="btn btn-success" style="padding: 8px 15px; font-size: 12px;" onclick="quickUp(${e.id})">${i18next.t('btn_update')}</button>
+        ['budget', 'debt', 'goal'].forEach(type => {
+            const envs = d.envelopes.filter(e => e.type === type);
+            if(envs.length === 0) return;
+            const block = document.createElement('div');
+            block.innerHTML = `<h3 style="margin: 30px 0 15px; border-bottom: 2px solid #eee;">${i18next.t('cat_' + type)}</h3><div class="env-grid" id="grid-${type}"></div>`;
+            cont.appendChild(block);
+            const grid = document.getElementById('grid-' + type);
+            envs.forEach(e => {
+                const prog = e.type === 'budget' ? 100 : Math.min(100, (e.current / (e.target || 1)) * 100);
+                grid.innerHTML += `
+                    <div class="env-card ${e.type}">
+                        <div style="display:flex; justify-content:space-between;">
+                            <div><strong>${e.name}</strong></div>
+                            <div>
+                                <button class="btn" onclick="openEditModal(${e.id})">✎</button>
+                                <button class="btn" style="background:var(--danger);color:white" onclick="delEnv(${e.id})">✕</button>
                             </div>
                         </div>
-                    `;
-                });
+                        <div class="progress-container"><div class="progress-bar" style="width:${prog}%; background:var(--${e.type==='goal'?'success':e.type==='debt'?'danger':'warning'});"></div></div>
+                        <div style="display:flex; justify-content:space-between; font-size:13px;">
+                            <span>${i18next.t('lbl_mon_ded')}: ${e.monthly}</span>
+                            <span>${e.current.toLocaleString()} / ${(e.target || 0).toLocaleString()}</span>
+                        </div>
+                        <div style="margin-top:15px; display:flex; gap:10px;">
+                            <input type="number" id="q-${e.id}" class="field" value="${e.monthly}" style="margin:0; flex:1">
+                            <button class="btn" style="background:var(--success);color:white" onclick="quickUp(${e.id})">${i18next.t('btn_update')}</button>
+                        </div>
+                    </div>`;
             });
-        }
+        });
+    }
 
-        function showTab(t) {
-            document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(tb => tb.classList.remove('active'));
-            document.getElementById(t + 'Section').classList.add('active');
-            document.getElementById('tab-' + t).classList.add('active');
-        }
+    function showTab(t) {
+        document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(tb => tb.classList.remove('active'));
+        document.getElementById(t + 'Section').classList.add('active');
+        document.getElementById('tab-' + t).classList.add('active');
+    }
 
-        function toggleWhatIf() {
-            isWhatIf = !isWhatIf;
-            if(isWhatIf) sandboxData = JSON.parse(JSON.stringify(realData));
-            document.body.classList.toggle('what-if-active', isWhatIf);
-            render();
-        }
+    function toggleWhatIf() {
+        isWhatIf = !isWhatIf;
+        if(isWhatIf) sandboxData = JSON.parse(JSON.stringify(realData));
+        document.body.classList.toggle('what-if-active', isWhatIf);
+        render();
+    }
 
-        function openAddModal() {
-            editId = null;
-            document.getElementById('modalTitle').innerText = i18next.t('modal_add');
-            document.getElementById('mName').value = '';
-            document.getElementById('mType').value = 'goal';
-            document.getElementById('mTarget').value = '';
-            document.getElementById('mDue').value = '';
-            document.getElementById('mCurrent').value = '0';
-            document.getElementById('mMonthly').value = '0';
-            toggleModalFields();
-            document.getElementById('envModal').classList.add('active');
-        }
+    function openAddModal() {
+        editId = null;
+        document.getElementById('envForm').reset();
+        document.getElementById('modalTitle').innerText = i18next.t('modal_add');
+        toggleModalFields();
+        document.getElementById('envModal').classList.add('active');
+    }
 
-        function openEditModal(id) {
-            editId = id;
-            const d = isWhatIf ? sandboxData : realData;
-            const e = d.envelopes.find(i => i.id === id);
-            document.getElementById('mName').value = e.name;
-            document.getElementById('mType').value = e.type;
-            document.getElementById('mTarget').value = e.target || '';
-            document.getElementById('mDue').value = e.dueDate || '';
-            document.getElementById('mCurrent').value = e.current;
-            document.getElementById('mMonthly').value = e.monthly;
-            document.getElementById('modalTitle').innerText = i18next.t('modal_update');
-            toggleModalFields();
-            document.getElementById('envModal').classList.add('active');
-        }
+    function openEditModal(id) {
+        editId = id;
+        const d = isWhatIf ? sandboxData : realData;
+        const e = d.envelopes.find(i => i.id === id);
+        document.getElementById('mName').value = e.name;
+        document.getElementById('mType').value = e.type;
+        document.getElementById('mTarget').value = e.target || '';
+        document.getElementById('mDue').value = e.dueDate || '';
+        document.getElementById('mCurrent').value = e.current;
+        document.getElementById('mMonthly').value = e.monthly;
+        document.getElementById('modalTitle').innerText = i18next.t('modal_update');
+        toggleModalFields();
+        document.getElementById('envModal').classList.add('active');
+    }
 
-        function closeModal() { document.getElementById('envModal').classList.remove('active'); }
+    function closeModal() { document.getElementById('envModal').classList.remove('active'); }
 
-        function saveEnv(ev) {
-            ev.preventDefault();
-            const e = {
-                id: editId || Date.now(),
-                name: document.getElementById('mName').value,
-                type: document.getElementById('mType').value,
-                target: parseFloat(document.getElementById('mTarget').value) || 0,
-                dueDate: document.getElementById('mDue').value,
-                current: parseFloat(document.getElementById('mCurrent').value) || 0,
-                monthly: parseFloat(document.getElementById('mMonthly').value) || 0,
-            createdAt: editId ? (d.envelopes.find(i => i.id === editId).createdAt || new Date().toISOString()) : new Date().toISOString(),
+    function saveEnv(ev) {
+        ev.preventDefault();
+        const d = isWhatIf ? sandboxData : realData;
+        const e = {
+            id: editId || Date.now(),
+            name: document.getElementById('mName').value,
+            type: document.getElementById('mType').value,
+            target: parseFloat(document.getElementById('mTarget').value) || 0,
+            dueDate: document.getElementById('mDue').value,
+            current: parseFloat(document.getElementById('mCurrent').value) || 0,
+            monthly: parseFloat(document.getElementById('mMonthly').value) || 0,
             history: editId ? (d.envelopes.find(i => i.id === editId).history || []) : [{type: 'created', date: new Date().toISOString(), amount: parseFloat(document.getElementById('mCurrent').value) || 0}]
-            };
-            const d = isWhatIf ? sandboxData : realData;
+        };
         if(editId) {
             const idx = d.envelopes.findIndex(i => i.id === editId);
             d.envelopes[idx] = e;
-        } else {
-            d.envelopes.push(e);
-        }
-            713
-            
-            
-            } else {
-                d.envelopes.push(e);
-            }
-            if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
-            closeModal();
-            render();
-        }
+        } else d.envelopes.push(e);
+        if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
+        closeModal(); render();
+    }
 
-        function quickUp(id) {
-            const val = parseFloat(document.getElementById('q-' + id).value) || 0;
-            const d = isWhatIf ? sandboxData : realData;
-            const e = d.envelopes.find(i => i.id === id);
-                if(e && val > 0) { if(!e.history) e.history = []; e.history.push({type: 'deposit', date: new Date().toISOString(), amount: val}); }
-            if(e) { e.current += val; if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData)); render(); }
-        }
-
-        function delEnv(id) {
-            if(!confirm(i18next.t('confirm_del'))) return;
-            const d = isWhatIf ? sandboxData : realData;
-            d.envelopes = d.envelopes.filter(i => i.id !== id);
+    function quickUp(id) {
+        const val = parseFloat(document.getElementById('q-' + id).value) || 0;
+        const d = isWhatIf ? sandboxData : realData;
+        const e = d.envelopes.find(i => i.id === id);
+        if(e && val > 0) {
+            e.current += val;
+            if(!e.history) e.history = [];
+            e.history.push({type: 'deposit', date: new Date().toISOString(), amount: val});
             if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
             render();
         }
+    }
 
-        function updateGlobal() {
-            const d = isWhatIf ? sandboxData : realData;
-            d.salary = parseFloat(document.getElementById('cfgSalary').value) || 0;
-            d.startDate = document.getElementById('cfgDate').value;
-            if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
-            render();
-        }
+    function delEnv(id) {
+        if(!confirm(i18next.t('confirm_del'))) return;
+        const d = isWhatIf ? sandboxData : realData;
+        d.envelopes = d.envelopes.filter(i => i.id !== id);
+        if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
+        render();
+    }
 
-        function getMonthsBetween(d1, d2) {
-            const start = new Date(d1);
-            const end = new Date(d2);
-            return (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-        }
+    function updateGlobal() {
+        const d = isWhatIf ? sandboxData : realData;
+        d.salary = parseFloat(document.getElementById('cfgSalary').value) || 0;
+        d.startDate = document.getElementById('cfgDate').value;
+        if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
+        render();
+    }
 
-        function renderTimeline() {
-            const d = isWhatIf ? sandboxData : realData;
-            const ch = document.getElementById('ganttChart');
-            ch.innerHTML = '';
-            d.envelopes.filter(e => e.type !== 'budget').forEach(e => {
-                const rem = Math.max(0, (e.target || 0) - e.current);
-                const dur = e.monthly > 0 ? Math.ceil(rem / e.monthly) : 0;
-                const wp = Math.min(100, (dur / 24) * 100); // 24 months scale
-                const row = document.createElement('div');
-                row.style.display = 'grid';
-                row.style.gridTemplateColumns = '120px 1fr';
-                row.style.gap = '15px';
-                row.style.alignItems = 'center';
-                row.innerHTML = `
-                    <div style="font-weight:700; font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${e.name}</div>
-                    <div style="height:24px; background:#f1f5f9; border-radius:12px; overflow:hidden;">
-                        <div style="width:${wp}%; height:100%; background:var(--${e.type==='goal'?'success':'danger'}); display:flex; align-items:center; padding:0 12px; color:white; font-size:10px; font-weight:800;">
-                            ${dur} ${i18next.t('col_months')}
-                        </div>
-                    </div>
-                `;
-                ch.appendChild(row);
-            });
-        }
+    function renderTimeline() {
+        const d = isWhatIf ? sandboxData : realData;
+        const ch = document.getElementById('ganttChart');
+        ch.innerHTML = '';
+        d.envelopes.filter(e => e.type !== 'budget').forEach(e => {
+            const rem = Math.max(0, (e.target || 0) - e.current);
+            const dur = e.monthly > 0 ? Math.ceil(rem / e.monthly) : 0;
+            const wp = Math.min(100, (dur / 24) * 100);
+            ch.innerHTML += `<div style="display:grid; grid-template-columns:120px 1fr; gap:15px; align-items:center;">
+                <div style="font-weight:700; font-size:13px;">${e.name}</div>
+                <div style="height:20px; background:#f1f5f9; border-radius:10px; overflow:hidden;">
+                    <div style="width:${wp}%; height:100%; background:var(--${e.type==='goal'?'success':'danger'}); display:flex; align-items:center; padding:0 10px; color:white; font-size:10px;">${dur} ${i18next.t('col_months')}</div>
+                </div>
+            </div>`;
+        });
+    }
 
-        function exportData() {
-            const b = new Blob([JSON.stringify(realData, null, 2)], {type: 'application/json'});
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(b);
-            a.download = `salary-planner.json`;
-            a.click();
-        }
+    function exportData() {
+        const b = new Blob([JSON.stringify(realData, null, 2)], {type: 'application/json'});
+        const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `salary-planner.json`; a.click();
+    }
 
-        function importData(ev) {
-            const f = ev.target.files[0];
-            if(!f) return;
-            const r = new FileReader();
-            r.onload = (e) => {
-                realData = JSON.parse(e.target.result);
-                localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
-                location.reload();
-            };
-            r.readAsText(f);
-        }
-
-        function resetAll() {
-            if(!confirm(i18next.t('confirm_reset'))) return;
-            localStorage.removeItem('salary_planner_v7');
+    function importData(ev) {
+        const f = ev.target.files[0];
+        if(!f) return;
+        const r = new FileReader();
+        r.onload = (e) => {
+            realData = JSON.parse(e.target.result);
+            localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
             location.reload();
-        }
+        };
+        r.readAsText(f);
+    }
 
-        function movePrio(id, st) {
-            const d = isWhatIf ? sandboxData : realData;
-            const idx = d.envelopes.findIndex(i => i.id === id);
-            if((idx === 0 && st === -1) || (idx === d.envelopes.length - 1 && st === 1)) return;
-            const item = d.envelopes.splice(idx, 1)[0];
-            d.envelopes.splice(idx + st, 0, item);
-            if(!isWhatIf) localStorage.setItem('salary_planner_v7', JSON.stringify(realData));
-            render();
-        }
+    function resetAll() {
+        if(!confirm(i18next.t('confirm_reset'))) return;
+        localStorage.removeItem('salary_planner_v7');
+        location.reload();
+    }
 
-        function updateModalSuggest() { const target = parseFloat(document.getElementById('mTarget').value) || 0; const due = document.getElementById('mDue').value; const cur = parseFloat(document.getElementById('mCurrent').value) || 0; const el = document.getElementById('modalSuggest'); if(!el) return; if(target > 0 && due) { const rem = Math.max(0, target - cur); const months = getMonthsBetween(realData.startDate, due); if(months > 0) { const sug = Math.ceil(rem / months); el.style.display = 'block'; el.innerHTML = i18next.t('lbl_suggested') + ' <strong>' + sug.toLocaleString() + '</strong> / ' + i18next.t('col_months'); } else { el.style.display = 'none'; } } else { el.style.display = 'none'; } } function toggleModalFields() {
-            const t = document.getElementById('mType').value;
-            document.getElementById('targetGrp').style.display = t === 'budget' ? 'none' : 'block';
-            document.getElementById('dueGrp').style.display = t === 'budget' ? 'none' : 'block';
-        }
+    function toggleModalFields() {
+        const t = document.getElementById('mType').value;
+        document.getElementById('targetGrp').style.display = t === 'budget' ? 'none' : 'block';
+        document.getElementById('dueGrp').style.display = t === 'budget' ? 'none' : 'block';
+    }
 
-        function showHistory(id) {
-                const d = isWhatIf ? sandboxData : realData;
-                const e = d.envelopes.find(i => i.id === id);
-                if(!e) return;
-                const hist = e.history || [];
-                let html = '';
-                if(hist.length === 0) { html = `<p style="text-align:center; color:var(--text-muted); padding:40px 20px;" data-i18n="lbl_no_history">${i18next.t('lbl_no_history')}</p>`; } else {
-                            hist.forEach(h => {
-                                            const dt = new Date(h.date).toLocaleString(i18next.language === 'ar' ? 'ar-SA' : 'en-US');
-                                            const label = h.type === 'created' ? i18next.t('lbl_initial_value') : i18next.t('lbl_deposit_on');
-                                            html += `<div style="padding:15px; margin-bottom:10px; background:#f8fafc; border-left:4px solid var(--primary); border-radius:10px;"><div style="display:flex; justify-content:space-between; align-items:center;"><div><div style="font-size:12px; color:var(--text-muted); margin-bottom:5px;">${h.type === 'created' ? i18next.t('lbl_created_on') : i18next.t('lbl_deposit_on')}: ${dt}</div><div style="font-weight:700; font-size:16px; color:var(--text-main);">${label}: <span class="num" style="color:var(--primary);">${h.amount.toLocaleString()}</span></div></div></div></div>`;
-                                        });
-                        }
-                document.getElementById('historyContent').innerHTML = html;
-                document.getElementById('historyModal').classList.add('active');
-            }
+    function loadDemoData() {
+        if (!confirm(i18next.t('confirm_load_demo'))) return;
+        const demoData = {
+            salary: 17000, startDate: new Date().toISOString().split('T')[0],
+            envelopes: [
+                {id: 1, name: 'Land Savings', target: 75000, current: 41250, monthly: 3000, type: 'goal'},
+                {id: 2, name: 'Home Rent', target: 28000, current: 14000, monthly: 2500, type: 'debt'}
+            ]
+        };
+        localStorage.setItem('salary_planner_v7', JSON.stringify(demoData));
+        location.reload();
+    }
 
-                // Load Clean Demo Data Function
-                function loadDemoData() {
-                                if (!confirm(i18next.t('confirm_load_demo') || 'هل تريد تحميل البيانات التجريبية؟ سيتم استبدال البيانات الحالية.')) {
-                                                    return;
-                                                }
-
-                                const demoData = {
-                                                    salary: 17000,
-                                                    envelopes: [
-                                                                            {id: 1, name: 'Land', target: 75000, saved: 41250, monthly: 3000, type: 'goal'},
-                                                                            {id: 2, name: 'Home Rent', target: 28000, saved: 14000, monthly: 2500, type: 'expense'},
-                                                                            {id: 3, name: 'Gov Fees', target: 19200, saved: 9600, monthly: 1600, type: 'expense'},
-                                                                            {id: 4, name: 'Hajj', target: 30000, saved: 25000, monthly: 1000, type: 'goal'},
-                                                                            {id: 5, name: 'Wife', target: 30000, saved: 6000, monthly: 1000, type: 'expense'},
-                                                                            {id: 6, name: 'Car', target: 50000, saved: 6500, monthly: 2500, type: 'goal'},
-                                                                            {id: 7, name: 'Side Hustle', target: 25000, saved: 5000, monthly: 1000, type: 'goal'},
-                                                                            {id: 8, name: 'Home expenses', target: 40000, saved: 2500, monthly: 2500, type: 'expense'}
-                                                                        ]
-                                                                    };
-
-                                localStorage.setItem('financeData', JSON.stringify(demoData));
-                                location.reload();
-                            }
-
-        // Event Listeners
-document.getElementById('addEnvelopeBtn').addEventListener('click', openAddModal);
-document.getElementById('langBtn').addEventListener('click', toggleLang);
-document.getElementById('sandboxBtn').addEventListener('click', toggleWhatIf);
-document.getElementById('exportBtn').addEventListener('click', exportData);
-document.getElementById('importBtn').addEventListener('click', () => document.getElementById('fileInput').click());
-document.getElementById('resetBtn').addEventListener('click', resetAll);
-document.getElementById('demoBtn').addEventListener('click', loadDemoData);
-document.getElementById('envModal').addEventListener('click', (e) => { if(e.target.id === 'envModal') closeModal(); });
-document.getElementById('historyModal').addEventListener('click', (e) => { if(e.target.id === 'historyModal') document.getElementById('historyModal').classList.remove('active'); });
-document.getElementById('envForm').addEventListener('submit', saveEnv);
-    </script>
+    document.getElementById('langBtn').addEventListener('click', toggleLang);
+    document.getElementById('sandboxBtn').addEventListener('click', toggleWhatIf);
+    document.getElementById('exportBtn').addEventListener('click', exportData);
+    document.getElementById('importBtn').addEventListener('click', () => document.getElementById('fileInput').click());
+    document.getElementById('demoBtn').addEventListener('click', loadDemoData);
+    document.getElementById('envForm').addEventListener('submit', saveEnv);
+</script>
 </body>
 </html>
