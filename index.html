@@ -496,7 +496,7 @@
                                 <button class="btn" style="background:var(--danger);color:white" onclick="delEnv(${e.id})">✕</button>
                             </div>
                         </div>
-                        <div class="progress-container"><div class="progress-bar" style="width:${prog}%; background:var(--${e.type==='goal'?'success':e.type==='debt'?'danger':'warning'});"></div></div>
+                        <div class="progress-container"><div class="progress-bar" style="width:${prog}%; background:var(--${e.type==='goal'?'success':e.type==='debt'?'danger':'warning'});\"></div></div>
                         <div style="display:flex; justify-content:space-between; font-size:13px;">
                             <span>${i18next.t('lbl_mon_ded')}: ${e.monthly}</span>
                             <span>${e.current.toLocaleString()} / ${(e.target || 0).toLocaleString()}</span>
@@ -635,7 +635,7 @@
 
     function resetAll() {
         if(!confirm(i18next.t('confirm_reset'))) return;
-        localStorage.removeItem('salary_planner_v7');
+        localStorage.removeItem('salary_planner_v7');Demo: Update demo data to a 5K salary professional scenario.
         location.reload();
     }
 
@@ -648,10 +648,13 @@
     function loadDemoData() {
         if (!confirm(i18next.t('confirm_load_demo'))) return;
         const demoData = {
-            salary: 17000, startDate: new Date().toISOString().split('T')[0],
+            salary: 5000, startDate: new Date().toISOString().split('T')[0],
             envelopes: [
-                {id: 1, name: 'Land Savings', target: 75000, current: 41250, monthly: 3000, type: 'goal'},
-                {id: 2, name: 'Home Rent', target: 28000, current: 14000, monthly: 2500, type: 'debt'}
+                {id: 1, name: 'Rent & Utilities', target: 2000, current: 0, monthly: 1800, type: 'budget'},
+                {id: 2, name: 'Emergency Fund', target: 5000, current: 500, monthly: 500, type: 'goal'},
+                {id: 3, name: 'Personal Loan', target: 8000, current: 2000, monthly: 1000, type: 'debt'},
+                {id: 4, name: 'Groceries', target: 1200, current: 0, monthly: 1000, type: 'budget'},
+                {id: 5, name: 'New Laptop', target: 3500, current: 1200, monthly: 400, type: 'goal'}
             ]
         };
         localStorage.setItem('salary_planner_v7', JSON.stringify(demoData));
