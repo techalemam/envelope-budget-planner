@@ -216,6 +216,71 @@
             .summary-grid { grid-template-columns: repeat(2, 1fr); }
             header { flex-direction: column; text-align: center; gap: 20px; }
         }
+/* Table-like Summary Styles */
+#summaryTableContainer table {
+  width: 100%;
+  border-collapse: collapse;
+    
+  #summaryTableContainer {
+    overflow-x: auto;
+  }
+  #summaryTableContainer th,
+  #summaryTableContainer td {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+#summaryTableContainer thead {
+  background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+  color: white;
+}
+
+#summaryTableContainer th {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+[dir="rtl"] #summaryTableContainer th {
+  text-align: right;
+}
+
+#summaryTableContainer tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.2s;
+}
+
+#summaryTableContainer tbody tr:hover {
+  background: #f8fafc;
+}
+
+#summaryTableContainer tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+#summaryTableContainer tbody tr:nth-child(even):hover {
+  background: #f1f5f9;
+}
+
+#summaryTableContainer td {
+  padding: 14px 20px;
+  font-size: 14px;
+}
+
+#summaryTableContainer td:first-child {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+        
     </style>
 </head>
 <body>
@@ -354,6 +419,7 @@
             lbl_months_due: "months left", lbl_suggested: "Suggested:", warn_short: "Deposit is too low",
             lbl_mon_ded: "Deposit", lbl_permanent: "Permanent", lbl_mon_left: "months left", lbl_remaining: "Remaining",
             quick_dep: "Quick Deposit", btn_update: "Add", btn_edit: "Edit", btn_save: "Save", btn_cancel: "Cancel", btn_reset: "Reset All",
+                            lbl_budget: "Budget",
             confirm_del: "Are you sure?", confirm_reset: "RESET ALL DATA?", sec_timeline: "Financial Freedom Timeline",
             sec_config: "Configuration", lbl_monthly_salary: "Monthly Salary", lbl_start_date: "Plan Start Date",
             export: "Export", import: "Import", warning_overAllocated: "Total monthly allocations exceed salary",
@@ -379,6 +445,7 @@
             lbl_months_due: "أشهر متبقية", lbl_suggested: "المقترح:", warn_short: "المبلغ أقل من المطلوب",
             lbl_mon_ded: "الاستقطاع", lbl_permanent: "دائم", lbl_mon_left: "شهور متبقية", lbl_remaining: "المتبقي",
             quick_dep: "إيداع سريع", btn_update: "إضافة", btn_edit: "تعديل", btn_save: "حفظ", btn_cancel: "إلغاء", btn_reset: "إعادة ضبط",
+                            lbl_budget: "الميزانية",
             confirm_del: "هل أنت متأكد؟", confirm_reset: "إعادة ضبط المصنع؟", sec_timeline: "الجدول الزمني للحرية المالية",
             sec_config: "الإعدادات", lbl_monthly_salary: "الراتب الشهري", lbl_start_date: "تاريخ بدء الخطة",
             export: "تصدير", import: "استيراد", warning_overAllocated: "الاستقطاعات تجاوزت الراتب",
@@ -442,6 +509,10 @@
                 <div class="stat-val">${ts.goal.toLocaleString()}</div>
             </div>
             <div class="stat-card" style="border-color: var(--primary);">
+                        <div class="stat-card" style="border-color: var(--warning);">
+                <div class="stat-label">${i18next.t('lbl_budget')}</div>
+                <div class="stat-val">${ts.budget.toLocaleString()}</div>
+            </div>
                 <div class="stat-label">${i18next.t('lbl_unallocated')}</div>
                 <div class="stat-val" style="color: ${unalloc < 0 ? 'var(--danger)' : 'inherit'}">
                     ${unalloc.toLocaleString()}
